@@ -1,0 +1,20 @@
+pressure: # dbar
+  min_valid: 0
+  max_valid: 500
+  max_gradient: 10
+latitude: # degree decimal
+  min_valid: -90
+  max_valid: 90
+  max_gradient: 2
+longitude: # degree decimal
+  min_valid: -180
+  max_valid: 180
+  max_gradient: 2
+time:
+  min_valid: "2000-01-01T00:00:00"
+  max_valid: 2100-12-31T23:59:59"
+  # Should add a check for gaps in time, but not sure what a good threshold is yet (this is nrt)
+temperature: # degree C
+  min_valid: -2
+  max_valid: 25
+  max_gradient: 5
