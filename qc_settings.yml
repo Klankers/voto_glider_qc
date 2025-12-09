@@ -1,0 +1,92 @@
+time:
+  range:
+    suspect: [null, null]
+    fail: [1420070400, NOW]  # Seconds between 19700101 and 20150101, and anything from the future which is clealy impossible
+  dt: # Exclusively for reporting purposes. Sample frequency will vary. Start with nrt
+    suspect: [25, 35]
+    fail: [5, 60] # Anything less than 5 seconds apart or more than a minute apart constitutes either a hiccup or a data gap
+    # alert: 43200  # 12 hours without data  
+    alert: 1000   # in case we intentionally want to test this
+
+latitude:
+  range:
+    suspect: [54, 65]
+    fail: [-90, 90] # Valid range for latitude
+  dt:
+    suspect: [-0.0001, 0.0001]  # Get similar results to QARTOD, but not identical
+    fail: [-0.001, 0.001]
+
+longitude:
+  range:
+    suspect: [6, 25]
+    fail: [-180, 180] # Valid range for longitude
+  dt:
+    suspect: [-0.0001, 0.0001]  # See latitude
+    fail: [-0.001, 0.001]
+
+pressure:
+  range:
+    suspect: [0, 600] # Don't assume reliable at the surface, Skagerrak max depth is about 600 m
+    fail: [-2, 1000]  # Sensors are rated to 1000 dbar
+  dt:
+    suspect: [-15, 15] # Defined from vertical speed as seen on our Glimpse plots
+    fail: [-50, 50]
+  spike: 10
+
+temperature:
+  range:
+    suspect: [-2, 40] #   Do we want something more local to the Baltic? Skagerrak vs Baltic cycles?
+    fail: [-5, 42]    #   Manufacturer specs
+  dt:
+    suspect: [-2, 2]  #   No idea yet for dt
+    fail: [-5, 5]
+  noise: [0.2, 0.5]   #   Upper and lower bounds for acceptable noise levels (suspect and fail)
+
+conductivity:
+  range:
+    suspect: [null, 60]
+    fail: [0, 85]
+  dt:
+    suspect: [-3, 3]  #   No idea yet
+    fail: [-10, 10]
+
+oxygen_concentration:
+  range:
+    # JFE - how to define manufacturer specs here?
+    suspect: [0.01, null]
+    fail: [0, 425]
+  dt:
+    suspect: [-10, 10]  #   No idea yet
+    fail: [-50, 50]
+
+chlorophyll:
+  range:
+    suspect: [0.01, 50]
+    fail: [0, 500]
+  dt:
+    suspect: [-1, 1]  #   No idea yet
+    fail: [-5, 5]
+
+backscatter:
+  range:
+    suspect: [0.000001, 0.05]
+    fail: [0, 1.5]
+  dt:
+    suspect: [-1, 1]  #   No idea yet
+    fail: [-5, 5]
+
+phycocyanin:
+  range:
+    suspect: [0.02, 500]
+    fail: [0, 10000]
+  dt:
+    suspect: [-1, 1]  #   No idea yet
+    fail: [-5, 5]
+
+downwelling_PAR:
+  range:
+    suspect: [0.0002, null]
+    fail: [0, 4]
+  dt:
+    suspect: [-1, 1]  #   No idea yet
+    fail: [-2, 2]
